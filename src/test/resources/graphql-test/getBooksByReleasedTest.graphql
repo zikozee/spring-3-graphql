@@ -1,0 +1,24 @@
+query getBooksByReleasedTest($releaseYear: Int = 2020, $releasePrintedEdition: Boolean) {
+    booksByReleased(releasedInput: {
+        year: $releaseYear
+        printedEdition: $releasePrintedEdition
+    })    {
+        author {
+            name
+            originCountry
+            addresses {
+                street
+                city
+                zipCode
+                country
+            }
+        }
+        title
+        publisher
+        released {
+            year
+            printedEdition
+            releasedCountry
+        }
+    }
+}

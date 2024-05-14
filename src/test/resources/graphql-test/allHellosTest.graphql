@@ -1,0 +1,6 @@
+query oneHelloTest {
+    allHellos {
+        text
+        randomNumber
+    }
+}

@@ -1,0 +1,21 @@
+query booksWrittenByTest{
+    books {
+        author {
+            name
+            originCountry
+            addresses {
+                street
+                city
+                zipCode
+                country
+            }
+        }
+        title
+        publisher
+        released {
+            year
+            printedEdition
+            releasedCountry
+        }
+    }
+}

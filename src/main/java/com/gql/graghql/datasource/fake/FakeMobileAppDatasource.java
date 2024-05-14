@@ -6,6 +6,9 @@ import lombok.RequiredArgsConstructor;
 import net.datafaker.Faker;
 import org.springframework.context.annotation.Configuration;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -25,7 +28,7 @@ public class FakeMobileAppDatasource {
     public static final List<MobileApp> MOBILE_APP_LIST = new ArrayList<>();
 
     @PostConstruct
-    private void postConstruct(){
+    private void postConstruct() throws MalformedURLException {
         for (int i = 0; i < 20; i++) {
             List<Address> addressList = new ArrayList<>();
 
@@ -53,6 +56,9 @@ public class FakeMobileAppDatasource {
                     .version(faker.app().version())
                     .platform(randomMobileAppPlatform())
                     .appId(UUID.randomUUID().toString())
+                    .releaseDate(LocalDate.now().minusDays(faker.random().nextInt(365)))
+                    .downloaded(faker.number().numberBetween(1, 1_500_000))
+                    .homepage("https://" + faker.internet().url())
                     .build();
 
             MOBILE_APP_LIST.add(mobileApp);

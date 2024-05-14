@@ -10,6 +10,7 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,7 +39,10 @@ public class FakeMobileAppController {
         boolean isAppMatch = StringUtils.containsIgnoreCase(app.getName(),
                 StringUtils.defaultIfBlank(filter.getName(), StringUtils.EMPTY))
                 && StringUtils.containsIgnoreCase(app.getVersion(),
-                StringUtils.defaultIfBlank(filter.getVersion(), StringUtils.EMPTY));
+                StringUtils.defaultIfBlank(filter.getVersion(), StringUtils.EMPTY))
+                && app.getReleaseDate().isAfter(
+                        Optional.ofNullable(filter.getReleaseAfter()).orElse(LocalDate.MIN))
+                && app.getDownloaded() >= Optional.ofNullable(filter.getMinimumDownload()).orElse(0);
 
         if(!isAppMatch) return false;
 

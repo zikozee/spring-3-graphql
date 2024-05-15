@@ -1,0 +1,52 @@
+type User {
+    id: ID!
+    username: String!
+    email: String!
+    avatar: String!
+    createdDateTime: LocalDateTime!
+    displayName: String
+    problems: [Problem]
+}
+
+interface SearchableItem {
+    id: ID!
+    createdDateTime: LocalDateTime!
+    prettyCreatedDatetime: String
+    content: String!
+    author: User!
+}
+
+input SearchItemFilter {
+    keyword: String
+}
+
+input UserCreateInput {
+    username: String!
+    email: String!
+    displayName: String!
+    avatar: String!
+}
+
+input UserLoginInput {
+    username: String!
+    password: String!
+}
+
+input UserActivationInput {
+    username: ID!
+    active: Boolean!
+}
+
+type UserAuthToken {
+    authToken: String
+    expiryTime: LocalDateTime
+}
+
+type UserResponse {
+    user: User
+    authToken: UserAuthToken
+}
+
+type UserActivationResponse {
+    isActive: Boolean
+}

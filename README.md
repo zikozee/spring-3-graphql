@@ -5,7 +5,8 @@
 - file ext= .graphql or.ql
 
 ### Building POJOs from graphql script
-- ensure graphql script path is present under schemaPaths in graphqlcodegen-maven-plugin
+- ensure graphql script path is present under schemaPaths.param  or schemaPaths.Path in graphqlcodegen-maven-plugin
+- it resolves subfolders
 - mvn compile
 - check the generated-sources under target folder
 

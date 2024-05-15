@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    username: ${GRAPHQL_USERNAME}
+    password: ${GRAPHQL_PASSW}
+    url: jdbc:postgresql://localhost:5432/graphql_problem
+
+  docker:
+    compose:
+      skip:
+        in-tests: false
+
+logging:
+  level:
+    org.springframework.modulith: DEBUG

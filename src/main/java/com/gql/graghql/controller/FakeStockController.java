@@ -4,7 +4,6 @@ import com.gql.graghql.codegen.DgsConstants;
 import com.gql.graghql.codegen.types.Stock;
 import com.gql.graghql.datasource.fake.FakeStockDatasource;
 import lombok.RequiredArgsConstructor;
-import org.reactivestreams.Publisher;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 import reactor.core.publisher.Flux;
@@ -20,7 +19,7 @@ import java.time.Duration;
 @RequiredArgsConstructor
 public class FakeStockController {
 
-    private FakeStockDatasource fakeStockDatasource;
+    private final FakeStockDatasource fakeStockDatasource;
 
 //    @SubscriptionMapping
     @SchemaMapping(

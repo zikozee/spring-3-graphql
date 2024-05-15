@@ -9,6 +9,9 @@ spring:
     websocket:
       path: /subscriptions
 
-#  threads:
-#    virtual:
-#      enabled: true
+  threads:
+    virtual:
+      enabled: true
+
+  profiles:
+    active: dev

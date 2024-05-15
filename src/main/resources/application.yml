@@ -3,10 +3,12 @@ spring:
     name: spring-3-graghql
 
   graphql:
-   graphiql:
+    graphiql:
       enabled: true
 #spring.graphql.schema.locations=classpath*:graphql/**/
+    websocket:
+      path: /subscriptions
 
-  threads:
-    virtual:
-      enabled: true
+#  threads:
+#    virtual:
+#      enabled: true

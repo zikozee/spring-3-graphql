@@ -21,3 +21,40 @@
   - https://www.graphql-java.com/documentation/scalars/
   - https://github.com/graphql-java/graphql-java-extended-scalars
   - https://www.danvega.dev/blog/graphql-custom-scalars
+
+
+# interface
+- downside all the Signature (fields) in the interface must be present also in the implementation (See pet.graphqls)
+
+
+#  Meta Field (__typename)
+- this is useful when the return type might vary (think of it like Object in java)
+- we can use it anywhere on interface, union etc
+
+# inline fragment
+- to show specific field based on different implementation 
+  - as the return type fields might vary we use inline fragment
+  - the fragment will retrieve matching different datatype/fields as return by query
+
+
+```graphql
+ query pets($petFilter: PetFilter) {
+  pets(petFilter: $petFilter) {
+    __typename
+    name
+    food
+
+    ... on Dog {
+      breed
+      size
+      coatLength
+    }
+
+    ... on Cat {
+      breed
+      registry
+    }
+  }
+}
+
+```

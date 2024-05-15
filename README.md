@@ -68,3 +68,27 @@
 - e.g search engine that can return results  Hello or Book
 - combining several Data stores or endpoints to filter or like a search engine
   - or querying multiple datasource or endpoints
+
+## httpHeaders And Params
+### HttpHeaders
+- implement WebGraphQlInterceptor
+- ```java
+  @Component
+  public class RequestHeaderInterceptor implements WebGraphQlInterceptor {
+  
+      @Override
+      public Mono<WebGraphQlResponse> intercept(WebGraphQlRequest request, Chain chain) {
+          String optionalHeader = request.getHeaders().getFirst("optionalHeader");
+          String mandatoryHeader = request.getHeaders().getFirst("mandatoryHeader");
+  
+          request.configureExecutionInput((executionInput, builder) ->
+                  builder.graphQLContext(Map.of("optionalHeader", StringUtils.defaultIfBlank(optionalHeader, StringUtils.EMPTY), "mandatoryHeader", StringUtils.defaultIfBlank(mandatoryHeader, StringUtils.EMPTY))).build());
+          return chain.next(request);
+      }
+  }
+
+  ```
+- use @ContextValue to retrieve
+
+### RequestParams
+- this does not exist rather use @Argument

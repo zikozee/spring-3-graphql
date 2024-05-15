@@ -61,3 +61,10 @@
 
 ### Schema Documentation
 - we can use  """ some documentation """ in the graphql schema and it will reflect (Altair, not graphiql)
+
+
+## Union
+- Several datatypes into one
+- e.g search engine that can return results  Hello or Book
+- combining several Data stores or endpoints to filter or like a search engine
+  - or querying multiple datasource or endpoints

@@ -50,6 +50,9 @@ public class FakeMobileAppController {
                 && !app.getPlatform().contains(filter.getPlatform().toLowerCase()))
             return false;
 
+        if(filter.getCategory() != null && app.getCategory() != filter.getCategory())
+            return false;
+
         return filter.getAuthor() == null
                 || StringUtils.containsIgnoreCase(app.getAuthor().getName(),
                 StringUtils.defaultIfBlank(filter.getAuthor().getName(), StringUtils.EMPTY));

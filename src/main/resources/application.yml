@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: spring-3-graghql
+
+  graphql:
+   graphiql:
+      enabled: true
+#spring.graphql.schema.locations=classpath*:graphql/**/
+
+  threads:
+    virtual:
+      enabled: true

@@ -11,7 +11,7 @@ type User {
 interface SearchableItem {
     id: ID!
     createdDateTime: LocalDateTime!
-    prettyCreatedDatetime: String
+    prettyCreatedDateTime: String
     content: String!
     author: User!
 }

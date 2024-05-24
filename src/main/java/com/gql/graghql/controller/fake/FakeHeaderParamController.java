@@ -1,13 +1,9 @@
-package com.gql.graghql.controller;
+package com.gql.graghql.controller.fake;
 
 import com.gql.graghql.codegen.DgsConstants;
-import graphql.GraphQLContext;
-import graphql.schema.DataFetchingEnvironment;
-import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.ContextValue;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author : Ezekiel Eromosei

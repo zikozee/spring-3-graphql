@@ -1,7 +1,7 @@
 type Problem implements SearchableItem {
     id: ID!
     createdDateTime: LocalDateTime!
-    prettyCreatedDatetime: String
+    prettyCreatedDateTime: String
     title: String!
     content: String!
     tags: [String!]!
@@ -18,7 +18,7 @@ input ProblemCreateInput {
 
 
 type ProblemResponse {
-    Problem: Problem
+    problem: Problem
 }
 
 type SolutionResponse {

@@ -1,4 +1,4 @@
-package com.gql.graghql.datasource;
+package com.gql.graghql.config;
 
 import net.datafaker.Faker;
 import org.springframework.context.annotation.Bean;

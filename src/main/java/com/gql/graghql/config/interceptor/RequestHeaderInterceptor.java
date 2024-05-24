@@ -24,9 +24,16 @@ public class RequestHeaderInterceptor implements WebGraphQlInterceptor {
     public Mono<WebGraphQlResponse> intercept(WebGraphQlRequest request, Chain chain) {
         String optionalHeader = request.getHeaders().getFirst("optionalHeader");
         String mandatoryHeader = request.getHeaders().getFirst("mandatoryHeader");
+        String authToken = request.getHeaders().getFirst("authToken");
 
         request.configureExecutionInput((executionInput, builder) ->
-                builder.graphQLContext(Map.of("optionalHeader", StringUtils.defaultIfBlank(optionalHeader, StringUtils.EMPTY), "mandatoryHeader", StringUtils.defaultIfBlank(mandatoryHeader, StringUtils.EMPTY))).build());
+                builder.graphQLContext(
+                        Map.of(
+                                "optionalHeader", StringUtils.defaultIfBlank(optionalHeader, StringUtils.EMPTY),
+                                "mandatoryHeader", StringUtils.defaultIfBlank(mandatoryHeader, StringUtils.EMPTY),
+                                "authToken", StringUtils.defaultIfBlank(authToken, StringUtils.EMPTY))
+                ).build()
+        );
         return chain.next(request);
     }
 }

@@ -1,7 +1,6 @@
-package com.gql.graghql.controller;
+package com.gql.graghql.controller.fake;
 
 import com.gql.graghql.codegen.DgsConstants;
-import com.gql.graghql.codegen.types.SmartSearchResult;
 import com.gql.graghql.datasource.fake.FakeBookDatasource;
 import com.gql.graghql.datasource.fake.FakeHelloDatasource;
 import org.apache.commons.lang3.StringUtils;

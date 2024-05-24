@@ -1,7 +1,7 @@
 type Solution implements SearchableItem{
     id: ID!
     createdDateTime: LocalDateTime!
-    prettyCreatedDatetime: String
+    prettyCreatedDateTime: String
     content: String!
     category: SolutionCategory!
     voteAsGoodCount: NonNegativeInt

@@ -93,3 +93,9 @@
 
 ### RequestParams
 - this does not exist rather use @Argument
+
+
+## security
+- according to documentation: leave everything accessible, but secure those that needs be secured
+- using @PreAuthorize or @Secured
+- since they have the same url

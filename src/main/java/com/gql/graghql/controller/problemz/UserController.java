@@ -39,8 +39,8 @@ public class UserController {
         return GraphqlBeanMapper.mapToGraphql(userz);
     }
 
-//    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-////    @Secured("ROLE_ADMIN")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+//    @Secured("ROLE_ADMIN")
     @SchemaMapping(
             typeName = DgsConstants.MUTATION.TYPE_NAME,
             field = DgsConstants.MUTATION.UserCreate

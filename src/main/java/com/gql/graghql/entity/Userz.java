@@ -26,6 +26,7 @@ public class Userz {
     private String email;
     private String hashedPassword;
     private String avatar;
+    private String userRole;
 
     @CreationTimestamp
     private LocalDateTime creationTimestamp;

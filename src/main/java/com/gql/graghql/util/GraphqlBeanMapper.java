@@ -131,4 +131,18 @@ public class GraphqlBeanMapper {
         }
     }
 
+    public Userz mapToEntity(UserCreateInput original){
+        Userz userz = new Userz();
+
+        userz.setId(UUID.randomUUID());
+        userz.setHashedPassword(HashUtil.hashBcrypt(original.getPassword()));
+        userz.setUsername(original.getUsername());
+        userz.setEmail(original.getEmail());
+        userz.setDisplayName(original.getDisplayName());
+        userz.setAvatar(original.getAvatar());
+        userz.setActive(true);
+
+        return userz;
+    }
+
 }

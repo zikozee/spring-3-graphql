@@ -5,6 +5,7 @@ import graphql.GraphQLError;
 import graphql.schema.DataFetchingEnvironment;
 import org.springframework.graphql.data.method.annotation.GraphQlExceptionHandler;
 import org.springframework.graphql.execution.ErrorType;
+import org.springframework.security.authorization.AuthorizationDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 
 /**
@@ -28,6 +29,28 @@ public class GlobalException {
 
     @GraphQlExceptionHandler(AuthenticationException.class)
     public GraphQLError exception(final AuthenticationException exception, final DataFetchingEnvironment env) {
+
+        return GraphQLError.newError()
+                .message(exception.getLocalizedMessage())
+                .errorType(ErrorClassification.errorClassification(ErrorType.UNAUTHORIZED.name()))
+                .path(env.getExecutionStepInfo().getPath())
+                .location(env.getField().getSourceLocation())
+                .build();
+    }
+
+    @GraphQlExceptionHandler(AccessDeniedException.class)
+    public GraphQLError exception(final AccessDeniedException exception, final DataFetchingEnvironment env) {
+
+        return GraphQLError.newError()
+                .message(exception.getLocalizedMessage())
+                .errorType(ErrorClassification.errorClassification(ErrorType.UNAUTHORIZED.name()))
+                .path(env.getExecutionStepInfo().getPath())
+                .location(env.getField().getSourceLocation())
+                .build();
+    }
+
+    @GraphQlExceptionHandler(AuthorizationDeniedException.class)
+    public GraphQLError exception(final AuthorizationDeniedException exception, final DataFetchingEnvironment env) {
 
         return GraphQLError.newError()
                 .message(exception.getLocalizedMessage())

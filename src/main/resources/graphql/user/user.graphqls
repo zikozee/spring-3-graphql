@@ -22,6 +22,7 @@ input SearchItemFilter {
 
 input UserCreateInput {
     username: String!
+    password: String!
     email: String!
     displayName: String!
     avatar: String!

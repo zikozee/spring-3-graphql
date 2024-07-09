@@ -2,6 +2,7 @@ package com.gql.graghql.service.command;
 
 import com.gql.graghql.entity.Userz;
 import com.gql.graghql.entity.UserzToken;
+import com.gql.graghql.exception.ProcessException;
 import com.gql.graghql.repository.UserzRepository;
 import com.gql.graghql.repository.UserzTokenRepository;
 import com.gql.graghql.exception.AuthenticationException;
@@ -48,5 +49,17 @@ public class UserzCommandService {
         userzToken.setExpiryTimestamp(now.plusHours(2));
 
         return userzTokenRepository.save(userzToken);
+    }
+
+    public Userz createUser(Userz userz) {
+        Optional<Userz> byUsernameIgnoreCase = userzRepository.findByUsernameIgnoreCase(userz.getUsername());
+        if(byUsernameIgnoreCase.isPresent()) throw new ProcessException("Username already exists");
+        return userzRepository.save(userz);
+    }
+
+    public Optional<Userz> activeUser(String username, boolean isActive) {
+        userzRepository.activateUser(username, isActive);
+
+        return userzRepository.findByUsernameIgnoreCase(username);
     }
 }
